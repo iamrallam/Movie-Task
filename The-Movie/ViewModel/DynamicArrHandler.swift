@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class DynamicArr<T> {
+class DynamicArrHandler<T> {
     
     typealias CompletionHandler = ((T) -> Void)
     
