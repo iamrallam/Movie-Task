@@ -53,7 +53,7 @@ extension DashboardVC : UITableViewDelegate{
 }
 
 class GenericDataSource<T> : NSObject {
-    var data: DynamicArr<[T]> = DynamicArr([])
+    var data: DynamicArrHandler<[T]> = DynamicArrHandler([])
 }
 
 class MoviesDataSource : GenericDataSource<Movie>, UITableViewDataSource,UITableViewDelegate {

@@ -11,12 +11,14 @@ struct MovieDetailViewModel {
     
     var service:MovieDetailService?
     var handleError : ((ErrorResult?) -> Void)?
+    weak var dataSource : GenericData<Movie>?
 
-    init(service :MovieDetailService = MovieDetailService()) {
+    init(service :MovieDetailService = MovieDetailService(), dataSource : GenericData<Movie>?) {
         self.service = service
+        self.dataSource = dataSource
     }
     
-    func fetchMovieDetails(withId:Int ,completion: @escaping (_ movie: Movie?)->()){
+    func fetchMovieDetails(withId:Int){
         guard service != nil else {
             handleError?(ErrorResult.custom(string: "Missing service"))
             return
@@ -28,7 +30,7 @@ struct MovieDetailViewModel {
             else{
                 DispatchQueue.main.async {
                     if let item = movie{
-                        completion(item)
+                        self.dataSource?.dataModel.value = [item]
                     }else{
                         self.handleError?(ErrorResult.custom(string: "Missing service"))
                     }

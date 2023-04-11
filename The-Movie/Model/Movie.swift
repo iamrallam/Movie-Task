@@ -40,7 +40,6 @@ struct Movie {
     let posterPath: String
     let title: String
     let releaseDate: String
-    let rating: Double
     let overview: String
 }
 
@@ -51,7 +50,6 @@ extension Movie: Decodable {
         case posterPath = "poster_path"
         case title = "title"
         case releaseDate = "release_date"
-        case rating = "vote_average"
         case overview = "overview"
     }
     
@@ -63,7 +61,6 @@ extension Movie: Decodable {
         posterPath = try movieContainer.decode(String.self, forKey: .posterPath)
         title = try movieContainer.decode(String.self, forKey: .title)
         releaseDate = try movieContainer.decode(String.self, forKey: .releaseDate)
-        rating = try movieContainer.decode(Double.self, forKey: .rating)
         overview = try movieContainer.decode(String.self, forKey: .overview)
     }
 }
