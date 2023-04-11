@@ -7,11 +7,10 @@
 
 
 import UIKit
-class DetailArr : GenericData<Movie>{
+class DetailScreenUIModel : GenericData<Movie>{
 }
 class GenericData<T> : NSObject {
-    var dataModel: DynamicArrHandler<[T]> = DynamicArrHandler([])
-
+    var dynamicHandler: DataHandler<Any> = DataHandler(Any.self)
 }
 
 class DetailsVC: UIViewController {
@@ -20,32 +19,31 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var lblDesc: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
     var movieId : Int?
-    let dataSource = DetailArr()
+    let detailUIModel = DetailScreenUIModel()
     
-
+    
     lazy var viewModel : MovieDetailViewModel = {
-        let viewModel = MovieDetailViewModel(dataSource: dataSource)
+        let viewModel = MovieDetailViewModel(dataSource: detailUIModel)
         return viewModel
     }()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         if let id = movieId{
             viewModel.fetchMovieDetails(withId: id)
-            self.dataSource.dataModel.addAndNotify(observer: self) { [weak self] _ in
-                if self!.dataSource.dataModel.value.count > 0{ self!.setupWithModel() }
-                }
+            self.detailUIModel.dynamicHandler.addObserver(self) { [weak self] _ in
+                if let dataModel = self?.detailUIModel.dynamicHandler.value as? Movie{                self?.setupWithModel(withModel: dataModel)}
+            }
         }
     }
-
-    func setupWithModel() {
-        let dataModel = dataSource.dataModel.value[0]
-        lblTitle.text = dataModel.title
-        lblDesc.text = dataModel.overview
-        lblReleaseDate.text = dataModel.releaseDate.formateDate()
-        img.kf.setImage(with: URL(string: "\(Path.image_Url.absolutePath)\(dataModel.posterPath)"))
+    
+    func setupWithModel(withModel:Movie) {
+        lblTitle.text = withModel.title
+        lblDesc.text = withModel.overview
+        lblReleaseDate.text = withModel.releaseDate.formateDate()
+        img.kf.setImage(with: URL(string: "\(Path.image_Url.absolutePath)\(withModel.posterPath)"))
     }
 }
 

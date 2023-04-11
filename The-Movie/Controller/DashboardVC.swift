@@ -11,7 +11,7 @@ class DashboardVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let dataSource = MoviesDataSource()
+    let dataSource = MoviesTableDataSource()
     lazy var viewModel : MovieViewModel = {
         let viewModel = MovieViewModel(dataSource: dataSource)
         return viewModel
@@ -33,7 +33,7 @@ class DashboardVC: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self.dataSource
         self.tableView.estimatedRowHeight = 130
-        self.dataSource.data.addAndNotify(observer: self) { [weak self] _ in
+        self.dataSource.dataHandler.addAndNotify(observer: self) { [weak self] _ in
             self?.tableView.reloadData()
         }
     }
@@ -45,7 +45,7 @@ extension DashboardVC : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailVC = UIStoryboard.loadFromMain(ControllersName.detailsViewController.rawValue) as? DetailsVC
-        let model = dataSource.data.value[indexPath.row]
+        let model = dataSource.dataHandler.value[indexPath.row]
         detailVC?.movieId = model.id
         self.navigationController?.pushViewController(detailVC!, animated: true)
         
@@ -53,18 +53,18 @@ extension DashboardVC : UITableViewDelegate{
 }
 
 class GenericDataSource<T> : NSObject {
-    var data: DynamicArrHandler<[T]> = DynamicArrHandler([])
+    var dataHandler: DataHandler<[T]> = DataHandler([])
 }
 
-class MoviesDataSource : GenericDataSource<Movie>, UITableViewDataSource,UITableViewDelegate {
+class MoviesTableDataSource : GenericDataSource<Movie>, UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.value.count
+        return dataHandler.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as! MovieTableViewCell
-        cell.setupWithModel(model: data.value[indexPath.row])
+        cell.setupWithModel(model: dataHandler.value[indexPath.row])
         return cell
         
     }

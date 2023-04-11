@@ -11,7 +11,7 @@
 		1F02424D29E2EBBF00817E24 /* EndPointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02424C29E2EBBF00817E24 /* EndPointProtocol.swift */; };
 		1F02424F29E2EBD000817E24 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02424E29E2EBD000817E24 /* Router.swift */; };
 		1F02425129E2EBED00817E24 /* UIStoryboard+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02425029E2EBED00817E24 /* UIStoryboard+Loader.swift */; };
-		1F02425329E2EC2000817E24 /* DynamicArrHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02425229E2EC2000817E24 /* DynamicArrHandler.swift */; };
+		1F02425329E2EC2000817E24 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02425229E2EC2000817E24 /* DataHandler.swift */; };
 		1F02425529E2EC4600817E24 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02425429E2EC4600817E24 /* MovieViewModel.swift */; };
 		1F02425729E2EC6300817E24 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02425629E2EC6300817E24 /* EndPoint.swift */; };
 		1F02425A29E2ECAD00817E24 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02425929E2ECAD00817E24 /* ParameterEncoding.swift */; };
@@ -39,7 +39,7 @@
 		1F02424C29E2EBBF00817E24 /* EndPointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointProtocol.swift; sourceTree = "<group>"; };
 		1F02424E29E2EBD000817E24 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1F02425029E2EBED00817E24 /* UIStoryboard+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Loader.swift"; sourceTree = "<group>"; };
-		1F02425229E2EC2000817E24 /* DynamicArrHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicArrHandler.swift; sourceTree = "<group>"; };
+		1F02425229E2EC2000817E24 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		1F02425429E2EC4600817E24 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		1F02425629E2EC6300817E24 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		1F02425929E2ECAD00817E24 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		1FDD0BAD29E2E9360028FA4A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				1F02425229E2EC2000817E24 /* DynamicArrHandler.swift */,
+				1F02425229E2EC2000817E24 /* DataHandler.swift */,
 				1F02425429E2EC4600817E24 /* MovieViewModel.swift */,
 				1FC8396A29E4265B00B1AFEF /* MovieDetailViewModel.swift */,
 			);
@@ -326,7 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F02425129E2EBED00817E24 /* UIStoryboard+Loader.swift in Sources */,
-				1F02425329E2EC2000817E24 /* DynamicArrHandler.swift in Sources */,
+				1F02425329E2EC2000817E24 /* DataHandler.swift in Sources */,
 				1F02424F29E2EBD000817E24 /* Router.swift in Sources */,
 				1F02424B29E2EBAB00817E24 /* HTTPTask.swift in Sources */,
 				1FC8396B29E4265B00B1AFEF /* MovieDetailViewModel.swift in Sources */,

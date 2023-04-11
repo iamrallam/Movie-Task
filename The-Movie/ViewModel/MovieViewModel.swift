@@ -42,11 +42,11 @@ struct MovieViewModel {
             
         }
     }
-
+    
     func sortArrByDate(movieArr:[Movie],orderType:ComparisonResult){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.dataSource?.data.value = movieArr.sorted(by: { dateFormatter.date(from:$0.releaseDate)?.compare(dateFormatter.date(from:$1.releaseDate)!) == orderType })
+        self.dataSource?.dataHandler.value = movieArr.sorted(by: { dateFormatter.date(from:$0.releaseDate)?.compare(dateFormatter.date(from:$1.releaseDate)!) == orderType })
     }
 }
 extension String {

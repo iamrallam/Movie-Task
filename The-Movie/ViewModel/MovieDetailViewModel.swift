@@ -12,7 +12,7 @@ struct MovieDetailViewModel {
     var service:MovieDetailService?
     var handleError : ((ErrorResult?) -> Void)?
     weak var dataSource : GenericData<Movie>?
-
+    
     init(service :MovieDetailService = MovieDetailService(), dataSource : GenericData<Movie>?) {
         self.service = service
         self.dataSource = dataSource
@@ -30,7 +30,7 @@ struct MovieDetailViewModel {
             else{
                 DispatchQueue.main.async {
                     if let item = movie{
-                        self.dataSource?.dataModel.value = [item]
+                        self.dataSource?.dynamicHandler.value = item
                     }else{
                         self.handleError?(ErrorResult.custom(string: "Missing service"))
                     }

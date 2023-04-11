@@ -11,7 +11,6 @@ struct MovieDetailService {
     let router = Router<MovieDetailsApi>()
     func getMovieDetail(movieId: Int, completion: @escaping (_ movie: Movie?,_ error: String?)->()){
         
-        
         router.request(.getMovieDetail(movieId: movieId)) { data, response, error in
             if error != nil {
                 completion(nil, "Theres Something Wrong.")
